@@ -1,3 +1,4 @@
+# DISCLAIMER: THIS IS A WORKING-PROGESS APP USING PROXMOX AND WIREGUARD, PLEASE DO NOT USE IF YOU ARE INEXPERIENCED WITH PROXMOX AND OR WIREGUARD
 # 🔐 WireGuard Flask Client Generator
 
 A simple, secure web interface for generating WireGuard client configurations with QR codes. Perfect for self-hosted VPN servers, allowing easy client onboarding with mobile device QR code scanning.
