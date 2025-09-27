@@ -1,0 +1,66 @@
+# WireGuard Flask Client Generator Configuration
+# Copy this file to app.conf and customize for your setup
+
+[server]
+# Your server's public IP address or domain name
+# This is what clients will connect to
+public_endpoint = YOUR_PUBLIC_IP_OR_DOMAIN
+
+# WireGuard interface name (usually wg0)
+interface = wg0
+
+# WireGuard listen port
+port = 51820
+
+# VPN subnet (clients get IPs from this range)
+network = 10.0.0.0/24
+
+# Server IP within the VPN subnet
+server_ip = 10.0.0.1
+
+[flask]
+# Flask application settings
+host = 127.0.0.1
+port = 5000
+debug = false
+
+# Secret key for session management (generate a random one)
+secret_key = your-secret-key-here-change-this
+
+[paths]
+# File and directory paths
+wireguard_conf = /etc/wireguard/wg0.conf
+client_db = /opt/wg-web/clients.json
+clients_dir = /opt/wg-web/clients
+log_dir = /opt/wg-web/logs
+
+[security]
+# Security settings
+basic_auth = true
+https_redirect = false
+max_clients = 100
+
+# Password requirements
+min_password_length = 8
+
+[client]
+# Default client configuration settings
+dns_servers = 1.1.1.1, 8.8.8.8
+allowed_ips = 0.0.0.0/0, ::/0
+persistent_keepalive = 25
+
+# Client naming
+name_length = 8
+name_prefix = wg-
+
+[logging]
+# Logging configuration
+level = INFO
+max_file_size = 10MB
+backup_count = 5
+
+[advanced]
+# Advanced settings
+auto_cleanup_days = 30
+qr_code_scale = 6
+config_template_path = templates/client.conf.j2

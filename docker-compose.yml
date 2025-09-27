@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  wireguard-flask:
+    build: .
+    container_name: wg-flask-generator
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./config:/app/config:ro
+      - ./clients:/app/clients
+      - ./logs:/app/logs
+      - /etc/wireguard:/etc/wireguard:rw
+    environment:
+      - FLASK_ENV=production
+      - WG_PUBLIC_ENDPOINT=${WG_PUBLIC_ENDPOINT:-your.domain.com}
+      - WG_INTERFACE=${WG_INTERFACE:-wg0}
+      - WG_NETWORK=${WG_NETWORK:-10.0.0.0/24}
+    networks:
+      - wireguard-net
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+
+  nginx:
+    image: nginx:alpine
+    container_name: wg-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./static:/var/www/static:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - wireguard-flask
+    networks:
+      - wireguard-net
+
+networks:
+  wireguard-net:
+    driver: bridge
+
+volumes:
+  wg-clients:
+    driver: local
+  wg-logs:
+    driver: local

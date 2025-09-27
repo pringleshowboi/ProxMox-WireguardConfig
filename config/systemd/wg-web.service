@@ -1,0 +1,43 @@
+[Unit]
+Description=WireGuard Web Client Generator
+Documentation=https://github.com/yourusername/wireguard-flask-generator
+After=network.target wireguard.service
+Wants=wireguard.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/wg-web
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=PYTHONPATH=/opt/wg-web
+Environment=FLASK_APP=app.py
+Environment=FLASK_ENV=production
+
+# Main process
+ExecStart=/usr/bin/python3 /opt/wg-web/app.py
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Process management
+Restart=always
+RestartSec=3
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+# Security settings
+NoNewPrivileges=false
+PrivateDevices=false
+ProtectSystem=false
+ProtectHome=true
+
+# Logging
+StandardOutput=append:/opt/wg-web/logs/app.log
+StandardError=append:/opt/wg-web/logs/error.log
+SyslogIdentifier=wg-web
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target
