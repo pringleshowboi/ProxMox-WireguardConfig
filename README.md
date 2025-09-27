@@ -85,14 +85,8 @@ python3 app.py
 ## 🖼️ Screenshots
 
 ### Web Interface
-![Web Interface](<img width="1920" height="1031" alt="image" src="https://github.com/user-attachments/assets/770f08e1-a0e3-4bd1-9647-38c1b47b52d2" />
-)
+![Web Interface](<img width="1920" height="1031" alt="image" src="https://github.com/user-attachments/assets/770f08e1-a0e3-4bd1-9647-38c1b47b52d2" />)
 
-### QR Code Generation
-![QR Code](screenshots/qr-code.png)
-
-### Mobile App Integration
-![Mobile App](screenshots/mobile-app.png)
 
 ## 📱 Mobile App Setup
 
