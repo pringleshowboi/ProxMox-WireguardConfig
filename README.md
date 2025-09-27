@@ -85,7 +85,8 @@ python3 app.py
 ## 🖼️ Screenshots
 
 ### Web Interface
-![Web Interface](screenshots/web-interface.png)
+![Web Interface](<img width="1920" height="1031" alt="image" src="https://github.com/user-attachments/assets/770f08e1-a0e3-4bd1-9647-38c1b47b52d2" />
+)
 
 ### QR Code Generation
 ![QR Code](screenshots/qr-code.png)
@@ -284,9 +285,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/wireguard-flask-generator/discussions)
 - **Email**: your-email@example.com
 
-## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/wireguard-flask-generator&type=Date)](https://star-history.com/#yourusername/wireguard-flask-generator&Date)
 
 ---
 
