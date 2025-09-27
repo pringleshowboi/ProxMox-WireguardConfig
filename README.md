@@ -182,7 +182,7 @@ docker run -d \
 
 ```bash
 # Clone and setup
-git clone https://github.com/yourusername/wireguard-flask-generator.git
+git clone https://github.com/pringleshowboi/ProxMox-WireguardConfig
 cd wireguard-flask-generator
 
 # Create virtual environment
